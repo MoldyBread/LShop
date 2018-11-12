@@ -28,13 +28,13 @@ header a{
 
 footer a{
 	text-decoration: underline;
-	color: #000;
+	color: #4F677A;
 	background-color: #fff;
 }
 
 footer a:hover{
 	color: #fff;
-	background-color:#000;
+	background-color:#4F677A;
 }
 
 footer img{
@@ -43,42 +43,53 @@ footer img{
 	background-color: transparent;
 }
 
-.main-content div{
-	margin-top: 10px;
-	margin-bottom: 10px;
+.categories,.goods{
 	display: inline-block;
-}
-
-.categories{
-	background-color: #fff;
+	margin-left: 18px;
+    margin-bottom: 10px;
+    background-color: #fff;
 	box-shadow: 0 0 2px 0 rgba(51,51,51,.05), 0 1px 4px 0 rgba(51,51,51,.15);
-    border-radius: 0 0 2px 2px;
+	border-radius: 0 0 2px 2px;
+}
+
+.categories-head,.goods-head,.categories-items,.goods-items{
     margin-left: 18px;
-
-	width: 18rem;
+	margin-right: 18px;
+	
 }
 
-.categories-head,.categories-items{
-	margin-top: 3px;
-	margin-left: 12px;
-}
-
-.categories-head{
-	margin-bottom: 0!important ;
-	padding: 3px 46% 0 7px;
+.categories-head,.goods-head{
 	font-size: 25px;
 	text-align: left;
 	text-transform: uppercase;
+}
+
+.categories-items,.goods-items{
+	margin: 5px 18px;
+}
+
+.categories{
+	width: 18rem;
+}
+
+.categories-head{
+	margin-top: 5.5px;
 	background-color: #4F677A;
 	color: #fff;
 }
-.categories-items{
-	padding: 0 46% 3px 7px;
-
-}
 
 .goods{
+	margin-top: 10px;
 	width: 70%;
+	min-width: 288.4px;
+	
+}
+
+.goods-head{
+	margin-top: 5px;
+	padding: 3px 46% 0 7px;
+	color: #4F677A;
+	border-bottom: 1px dotted #4F677A;
 }
 
 
