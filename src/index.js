@@ -6,7 +6,8 @@ $( document ).ready(function() {
     console.log( "ready!" );
 });
 
-$.get( "http://nit.tron.net.ua/api/category/list", function( data ) {
-  $( ".result" ).html( data );
-  $("#first").text(data);
+$(function(){
+    $.getJSON('http://nit.tron.net.ua/api/category/list', function(data) {
+        console.log(data[0]['id']);
+    });
 });

@@ -2,17 +2,24 @@ body {
   margin: 5px 0 0 0;
   width: 100%;
   font: 100% Helvetica, sans-serif;
-  background-color: #efefef;
+  background-color: #F9F9F9;
   overflow-x: hidden; }
 
 footer, header {
   color: #fff;
   background-color: green;
-  padding: 10px 15px;
-  margin-top: -10px; }
+  padding: 10px 15px; }
 
 footer a, header a {
   text-decoration: none; }
+
+header {
+  margin-top: -10px; }
+
+header a {
+  color: #fff;
+  font-family: Krona One;
+  font-size: 30px; }
 
 footer a {
   color: #000;
@@ -22,8 +29,19 @@ footer a:hover {
   color: #fff;
   background-color: #000; }
 
-header a {
-  color: #fff;
-  font-family: Krona One;
-  font-size: 30px; }
+footer img {
+  width: 30px;
+  height: 30px;
+  background-color: transparent; }
+
+.main-content div {
+  display: inline-block; }
+
+.categories {
+  background-color: #ebebeb;
+  border-right: 1px solid #000;
+  width: 20%; }
+
+.goods {
+  width: 70%; }
 
