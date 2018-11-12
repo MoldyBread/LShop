@@ -22,6 +22,7 @@ header a {
   font-size: 36px; }
 
 footer a {
+  text-decoration: underline;
   color: #000;
   background-color: #fff; }
 
@@ -47,16 +48,20 @@ footer img {
   width: 18rem; }
 
 .categories-head, .categories-items {
-  padding: 3px 46% 3px 7px;
   margin-top: 3px;
   margin-left: 12px; }
 
 .categories-head {
+  margin-bottom: 0 !important;
+  padding: 3px 46% 0 7px;
   font-size: 25px;
   text-align: left;
   text-transform: uppercase;
   background-color: #4F677A;
   color: #fff; }
+
+.categories-items {
+  padding: 0 46% 3px 7px; }
 
 .goods {
   width: 70%; }
