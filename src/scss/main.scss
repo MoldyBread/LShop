@@ -17,6 +17,9 @@ footer a,header a{
 }
 
 header{
+	width: 100%;
+	position: fixed;    
+	z-index: 100;
 	margin-top: -5px;
 }
 
@@ -50,7 +53,7 @@ footer img{
 .categories,.goods{
 	vertical-align:top;
 	display: inline-block;
-    margin-top: 10px;
+    margin-top: 70px;
 	margin-left: 18px;
     margin-bottom: 10px;
     background-color: #fff;
@@ -66,7 +69,6 @@ footer img{
 
 .categories-head,.goods-head{
 	font-size: 25px;
-	text-transform: uppercase;
 }
 
 .categories-items,.goods-items{
@@ -78,6 +80,7 @@ footer img{
 }
 
 .categories-head{
+	text-transform: uppercase;
     padding: 5px;
     text-align: center;
 	border-radius: 7px;
@@ -95,6 +98,7 @@ footer img{
 	margin-top: 5px;
 	list-style: none;
 	font-size: 20px;
+	cursor: pointer;
 }
 
 .highlight{
@@ -122,9 +126,10 @@ footer img{
 }
 
 .goods-grid{
+	height: 454.200px;
 	width: 250px;
-    height: auto;
-    padding-bottom: 0;
+    //height: auto;
+    padding-bottom: 10px;
     margin: 0 4px 4px 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); 	//border: 2px solid #000;
@@ -136,7 +141,7 @@ footer img{
 }
 
 .goods-img{
-	line-height: 200px;
+	line-height: 250px;
     vertical-align: middle;
 	margin: 10px;
 	height: 290px;
@@ -157,5 +162,48 @@ footer img{
 	overflow-wrap: break-word;
 }
 
+.sales{
+	color: gray;
+	text-decoration:line-through;
+	text-decoration-color: #fb515d;
+}
+
+.price,.reg-price{
+	padding: 3px 0;
+	border: 1.5px dashed #4F677A;
+}
+
+.price{
+	color: #fb515d;
+	margin: 16px 10px;
+}
+
+.reg-price{
+	margin: 32px 10px;
+	color: #000;
+}
+
+.my-button{
+	border-width: 2px;
+	color: #4F677A;
+    border: 3px solid #4F677A;
+    min-width: 6rem;
+    border-radius: 0.5rem;
+    font-size: 0.8em;
+    min-height: 2rem;
+    width: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: transparent;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.my-button:hover{
+	color: #fff;
+    background-color: #4F677A;
+}
 
 
