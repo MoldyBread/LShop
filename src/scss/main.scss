@@ -43,8 +43,14 @@ footer img{
 	background-color: transparent;
 }
 
+.main-content{
+	white-space:nowrap;
+}
+
 .categories,.goods{
+	vertical-align:top;
 	display: inline-block;
+    margin-top: 10px;
 	margin-left: 18px;
     margin-bottom: 10px;
     background-color: #fff;
@@ -60,7 +66,6 @@ footer img{
 
 .categories-head,.goods-head{
 	font-size: 25px;
-	text-align: left;
 	text-transform: uppercase;
 }
 
@@ -73,25 +78,84 @@ footer img{
 }
 
 .categories-head{
+    padding: 5px;
+    text-align: center;
+	border-radius: 7px;
 	margin-top: 5.5px;
 	background-color: #4F677A;
 	color: #fff;
 }
 
+.categories-items ul{
+	padding-left: 0;
+}
+
+.load{
+	padding: 2.5px 2.5px 2.5px 10px;
+	margin-top: 5px;
+	list-style: none;
+	font-size: 20px;
+}
+
+.highlight{
+	border: 2px solid #4F677A;
+	border-radius: 7px;
+}
+
 .goods{
-	margin-top: 10px;
+	position: relative;
 	width: 70%;
 	min-width: 288.4px;
 	
 }
 
 .goods-head{
+	text-align: left;
 	margin-top: 5px;
 	padding: 3px 46% 0 7px;
 	color: #4F677A;
 	border-bottom: 1px dotted #4F677A;
 }
 
+.goods-items{
+	margin-left: 7%;
+}
+
+.goods-grid{
+	width: 250px;
+    height: auto;
+    padding-bottom: 0;
+    margin: 0 4px 4px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); 	//border: 2px solid #000;
+	margin: 27px;
+	float: left;
+	text-align: center;
+	word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+.goods-img{
+	line-height: 200px;
+    vertical-align: middle;
+	margin: 10px;
+	height: 290px;
+}
+
+
+.goods-img img{
+	vertical-align: middle;
+	margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.goods-text{
+	margin-right: 0;
+	overflow-wrap: break-word;
+}
 
 
 
