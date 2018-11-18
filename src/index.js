@@ -120,9 +120,6 @@ function cartCheck(){
 	if(localStorage.getItem('cart')!=null){
 		cart=JSON.parse(localStorage.getItem('cart'));
 	}
-	else{
-		console.log(1);
-	}
 }
 
 function showCartItems(){
