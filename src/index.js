@@ -75,6 +75,11 @@ function loadGoods(id){
         		cart[id].name=data[id-1]['name'];
         		cart[id].image=data[id-1]['image_url'];
         		cart[id].quantity=1;
+        		if(data[id-1]['special_price']!=null){
+        			cart[id].price=data[id-1]['special_price'];
+        		}else{
+        			cart[id].price=data[id-1]['price'];
+        		}
         	}
         	localStorage.setItem('cart',JSON.stringify(cart));
         	
@@ -124,20 +129,29 @@ function cartCheck(){
 function showCartItems(){
 	console.log(cart);
 	if(!isEmpty(cart)){
-	var out='';
+    var currPrice=0.00;
+
+	var out='<p style="text-align: center;border-bottom: 1px dotted #4F677A;margin: 0px; padding-bottom: 4px;">Корзина</p>';
+	out+='<div style="border-bottom: 1px dotted #4F677A;">';
 	for(var item in cart){
 		out+='<div id="cart-dd">';
 		out+='<div class="cart-item">';
 		out+='<img data-art="'+item+'" class="cross" src="http://simpleicon.com/wp-content/uploads/cross.png">';
 		out+='<p class="good">'+cart[item].name+'</p>';
 		out+='<div class="quantity">';
-		out+='<img data-art="'+item+'" class="left-img" src="http://pngimg.com/uploads/plus/plus_PNG31.png">';
+		out+='<img data-art="'+item+'" class="left-img" src="./Pictures/plus.png">';
 		out+='<p class="cart-p">'+cart[item].quantity+'</p>';
-		out+='<img data-art="'+item+'" class="right-img" src="http://pngimg.com/uploads/minus/minus_PNG55.png">';
+		out+='<img data-art="'+item+'" class="right-img" src="./Pictures/minus.png">';
 		out+='</div>';
 		out+='</div>';
 		out+='</div>';
+		currPrice+=parseFloat(cart[item].price)*cart[item].quantity;
 	}
+	out+='</div>';
+	out+='<p>Разом: '+currPrice+' грн. </p>';
+	out+='<button class="my-button">До оплати</button>'
+	
+
 	$('#dropdown').html(out);
 
 	$('img.cross').on('click', function(){
@@ -163,7 +177,7 @@ function showCartItems(){
 		localStorage.setItem('cart',JSON.stringify(cart));
 	});
 	}else{
-		var out='<p>Нічого не додано</p>';
+		var out='<p style="text-align: center;border-bottom: 1px dotted #4F677A;margin: 0px; padding-bottom: 4px;">Корзина</p>';out+='<p>Нічого не додано</p>';
 		$('#dropdown').html(out);
 	}
 }
