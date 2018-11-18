@@ -37,7 +37,6 @@ $( document ).ready(function() {
 function loadGoods(id){
 	var link = 'http://nit.tron.net.ua/api/product/list/category/'+id;
 	$.getJSON(link, function(data) {
-        //console.log(data);
         var out ='';
         for(var key in data){
         	console.log(data[key].image_url);
@@ -48,7 +47,7 @@ function loadGoods(id){
         	out+='</div>';
 
         	out+='<div class="goods-text">';
-        	out+='<p>'+data[key]['name']+'</h3>';
+        	out+='<p>'+data[key]['name']+'</p>';
         	if(data[key]['special_price']===null){
         		out+='<p class="reg-price">'+data[key]['price']+' грн. </p>';
         	}
