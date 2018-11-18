@@ -39,9 +39,6 @@ footer img {
   height: 30px;
   background-color: transparent; }
 
-.white {
-  background-color: #fff; }
-
 .cart {
   margin-right: 60px;
   float: right; }
@@ -133,10 +130,9 @@ footer img {
   white-space: nowrap; }
 
 .categories, .goods {
-  vertical-align: top;
   display: inline-block;
   margin-top: 70px;
-  margin-left: 18px;
+  margin-left: 50px;
   margin-bottom: 10px;
   background-color: #fff;
   box-shadow: 0 0 2px 0 rgba(51, 51, 51, 0.05), 0 1px 4px 0 rgba(51, 51, 51, 0.15);
@@ -179,7 +175,6 @@ footer img {
   border-radius: 7px; }
 
 .goods {
-  position: relative;
   width: 70%;
   min-width: 288.4px; }
 
@@ -265,4 +260,16 @@ footer img {
 .my-button:hover {
   color: #fff;
   background-color: #4F677A; }
+
+@media screen and (min-width: 400px) {
+  .categories, .goods {
+    vertical-align: top;
+    margin-top: 70px;
+    margin-left: 18px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 2px 0 rgba(51, 51, 51, 0.05), 0 1px 4px 0 rgba(51, 51, 51, 0.15);
+    border-radius: 0 0 2px 2px; }
+  .goods {
+    position: relative; } }
 
