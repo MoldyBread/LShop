@@ -4,11 +4,14 @@ html{
 
 body {
 	margin: 5px 0 0 0;
-	width: 100%;
+	width: auto;
+	min-width: 175px;
     font: 100% Arial, sans-serif;
     background-color: #cacaca;
     overflow-x:hidden;
 }
+
+
 
 
 footer,header {
@@ -208,6 +211,7 @@ footer img:hover{
 }
 
 .goods-items{
+
 	display: inline;
 }
 
@@ -246,7 +250,7 @@ footer img:hover{
 .goods{
 	
 	width: auto;
-	//min-width: 288.4px;
+	max-width: 75%;
 	
 }
 
@@ -256,6 +260,10 @@ footer img:hover{
 	padding: 3.5px 46% 5px 7px;
 	color: #4F677A;
 	border-bottom: 1px dotted #4F677A;
+}
+
+div.goods-grid{
+	margin: 10px 3%;
 }
 
 .goods-grid{
@@ -372,15 +380,10 @@ p.getDescription:hover{
    	margin-left:0;
    }
 
-   .de-emphasized {
-   	  filter: blur(3px) contrast(.8)
-      brightness(.8);
-   }
-
 	.categories,.goods{
 	  vertical-align:top;
 	  display: inline-block;
-	  margin: 80px 10px 10px 10px;
+	  
       background-color: #fff;
 	  box-shadow: 0 0 2px 0 rgba(51,51,51,.05), 0 1px 4px 0 rgba(51,51,51,.15);
 	  border-radius: 0 0 2px 2px;
@@ -388,6 +391,7 @@ p.getDescription:hover{
 
     .categories{
 	width: 18rem;
+	margin: 80px 10px 10px 10px;
     }
 
     .categories-head{
@@ -395,13 +399,16 @@ p.getDescription:hover{
     }
 
     .goods{
-    	width: 75%;
+    	margin: 80px auto 10px auto;
+    	//width: auto;
+    	//max-width: 75%;
     	position: relative;
     }
 
     .goods-items{
-    	display: block;
-	    margin-left: 9%;
+    	//display: block;
+	    margin:0 auto;
+
     }
 
 
@@ -427,7 +434,7 @@ p.getDescription:hover{
 .dialog-inner{
     position: relative;
 	overflow-y: auto;
-    margin: 0 5%;
+    margin: 0 auto;
     max-width: 1200px;
     padding-bottom: 10px;
     background-color: #fff;
@@ -447,7 +454,7 @@ p.getDescription:hover{
 }
 
 .dialog-title{
-margin: 0 5%;
+margin: 0 auto;
 text-align: center;
 position: relative;
 vertical-align: middle;
