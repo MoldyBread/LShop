@@ -22,6 +22,9 @@ header {
   margin-top: -5px;
   position: relative; }
 
+footer {
+  margin-top: 5px; }
+
 header a {
   margin-left: 15px;
   color: #fff;
@@ -145,6 +148,7 @@ footer img:hover {
 .main-content {
   z-index: 50;
   min-width: 387px;
+  width: 100%;
   white-space: nowrap; }
 
 .categories, .goods {
@@ -200,7 +204,7 @@ footer img:hover {
 .goods-head {
   text-align: left;
   margin-top: 5px;
-  padding: 3px 46% 0 7px;
+  padding: 3.5px 46% 5px 7px;
   color: #4F677A;
   border-bottom: 1px dotted #4F677A; }
 
@@ -233,6 +237,13 @@ footer img:hover {
   margin-right: 10px;
   margin-left: 10px; }
 
+p.getDescription {
+  color: #5682a3;
+  cursor: pointer; }
+
+p.getDescription:hover {
+  color: #000; }
+
 .goods-text p {
   max-height: 19px;
   white-space: pre-wrap;
@@ -248,10 +259,12 @@ footer img:hover {
   border: 1.5px dashed #4F677A; }
 
 .price {
+  background-color: whitesmoke;
   color: #fb515d;
   margin: 16px 10px; }
 
 .reg-price {
+  background-color: whitesmoke;
   margin: 32px 10px;
   color: #000; }
 
@@ -304,12 +317,101 @@ footer img:hover {
     position: relative; }
   .goods-items {
     display: block;
-    margin-left: 7%; } }
+    margin-left: 9%; } }
 
 @media screen and (min-width: 554px) {
   .dd {
     margin-top: 50px; } }
 
-.dialog {
-  position: absolute; }
+.back-dialog {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 100px;
+  z-index: 99; }
+
+.dialog-inner {
+  position: relative;
+  overflow-y: auto;
+  margin: 0 5%;
+  max-width: 1200px;
+  padding-bottom: 10px;
+  background-color: #fff; }
+
+.dialog-content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 400px;
+  padding: 15px 30px; }
+
+.dialog-content img {
+  max-width: 30%;
+  max-height: 40%; }
+
+.dialog-title {
+  margin: 0 5%;
+  text-align: center;
+  position: relative;
+  vertical-align: middle;
+  height: 30px;
+  max-width: 1200px;
+  background-color: #3498DB;
+  color: #fff; }
+
+.close-dialog {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  color: #fff;
+  background-color: #5682a3;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer; }
+
+.close-dialog:before {
+  font-family: Arial;
+  color: rgba(255, 255, 255, 0.9);
+  content: "x";
+  font-size: 20px;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  outline: none; }
+
+.dialog-item-info {
+  float: left; }
+
+.dialog-content h3 {
+  font-family: Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  border-bottom: 2px solid #3498DB; }
+
+.dialog-right {
+  min-width: 220px;
+  max-width: 700px;
+  margin-left: 2.5%;
+  float: left; }
+
+.dialog-item-info .my-button {
+  margin: 10px 0 0 0; }
+
+.dialog-price {
+  max-width: 200px;
+  border: 2px solid #000;
+  border-radius: 5px; }
+
+.dialog-price .reg-price {
+  margin: 10px; }
+
+.dialog-price .sales {
+  margin: 10px; }
+
+.blur {
+  filter: blur(4px) contrast(0.5) brightness(0.9);
+  position: fixed; }
+
+.fix {
+  display: none; }
 

@@ -12,13 +12,25 @@ var cart={};
 var cartVisible = false;
 
 $( document ).ready(function() {
-    //console.log( "ready!" );
+    $("#dialog").hide();
+    $('.close-dialog').on('click', function(){
+    	$("#dialog").fadeOut();
+	    $('.main-content').removeClass('blur');
+	    $('footer').removeClass('fix');
+    });
     loadCategories();
     loadGoods(1);
     cartCheck();
     console.log(cart);
     $('#cart').on('click', function(){
-    	if(!cartVisible){
+    	cartDrop();
+    	
+    });
+
+});
+
+function cartDrop(){
+	if(!cartVisible){
     		showCartItems();
     		$('#dropdown').addClass('drop');
     		$('.dd').addClass('dd-active');
@@ -28,10 +40,7 @@ $( document ).ready(function() {
     		$('.dd').removeClass('dd-active');
     		cartVisible=false;
     	}
-    	
-    });
-
-});
+}
 
 
 function loadGoods(id){
@@ -47,7 +56,7 @@ function loadGoods(id){
         	out+='</div>';
 
         	out+='<div class="goods-text">';
-        	out+='<p>'+data[key]['name']+'</p>';
+        	out+='<p class="getDescription" data-art="'+data[key]['id']+'">'+data[key]['name']+'</p>';
         	if(data[key]['special_price']===null){
         		out+='<p class="reg-price">'+data[key]['price']+' грн. </p>';
         	}
@@ -93,6 +102,11 @@ function loadGoods(id){
     	    	showCartItems();
     	    }
         });
+
+        $('p.getDescription').on('click', function(){
+        	var id = $(this).attr('data-art');
+        	showGoodDialog(id);
+        });
     });
 }
 
@@ -137,7 +151,7 @@ function showCartItems(){
 		out+='<div id="cart-dd">';
 		out+='<div class="cart-item">';
 		out+='<img data-art="'+item+'" class="cross" src="http://simpleicon.com/wp-content/uploads/cross.png">';
-		out+='<p class="good">'+cart[item].name+'</p>';
+		out+='<p class="good" data-art="'+item+'">'+cart[item].name+'</p>';
 		out+='<div class="quantity">';
 		out+='<img data-art="'+item+'" class="left-img" src="./Pictures/plus.png">';
 		out+='<p class="cart-p">'+cart[item].quantity+'</p>';
@@ -152,10 +166,19 @@ function showCartItems(){
 	out+='<button class="my-button">До оплати</button>'
 	
 
+
+
 	$('#dropdown').html(out);
+
+	$('p.good').on('click', function(){
+		var id = $(this).attr('data-art');
+		cartDrop();
+		showGoodDialog(id);
+	});
 
 	$('img.cross').on('click', function(){
 		var id = $(this).attr('data-art');
+		cart[id].quantity=0;
 		delete cart[id];
 		showCartItems();
 		localStorage.setItem('cart',JSON.stringify(cart));
@@ -180,6 +203,72 @@ function showCartItems(){
 		var out='<p style="text-align: center;border-bottom: 1px dotted #4F677A;margin: 0px; padding-bottom: 4px;">Корзина</p>';out+='<p>Нічого не додано</p>';
 		$('#dropdown').html(out);
 	}
+}
+
+function showGoodDialog(id){
+	$("#dialog").fadeIn();
+	$('.main-content').addClass('blur');
+	$('footer').addClass('fix');
+
+	$.getJSON('http://nit.tron.net.ua/api/product/'+id, function(data) {
+		var out='';
+
+		out+='<img style="float:left;" src="'+data['image_url']+'">';
+
+        out+='<div class="dialog-right">';
+        out+='<h3>'+data['name']+'</h3>';
+		out+='<div class="dialog-item-info">';
+		
+		out+='<p style="text-transform: uppercase; margin-bottom: 5px;">Опис товару</p>';
+		out+='<p style="font: 88% Arial, sans-serif; margin-top: 5px;">'+data['description']+'</p>';
+		out+='<div class="dialog-price">';
+		out+='<p style="text-transform: uppercase; margin: 5px 10px;">Ціна</p>';
+
+		if(data['special_price']===null){
+        		out+='<p class="reg-price">'+data['price']+' грн. </p>';
+        	}
+        	else{
+        		out+='<p class="sales">'+data['price']+' грн. </p>';
+        		out+='<p class="price">'+data['special_price']+' грн. </p>';
+        	}
+		out+='</div>';
+		out+='<button class="my-button" data-art="'+data['id']+'"> В корзину </button>';
+		out+='</div>';
+		out+='</div>';
+
+
+		$('.dialog-content').html(out);
+		$('button.my-button').on('click', function(){
+        	var id = $(this).attr('data-art');
+        	$( "#cart" ).effect( "shake" );
+        	if(cart[id]!=undefined){
+        		cart[id].quantity++;
+        	}
+        	else{
+        		//cart[id].quantity=1;
+        		cart[id]={};
+        		cart[id].name=data['name'];
+        		cart[id].image=data['image_url'];
+        		cart[id].quantity=1;
+        		if(data['special_price']!=null){
+        			cart[id].price=data['special_price'];
+        		}else{
+        			cart[id].price=data['price'];
+        		}
+        	}
+        	localStorage.setItem('cart',JSON.stringify(cart));
+        	
+        	if(!cartVisible){
+    		$('#dropdown').addClass('drop');
+    		$('.dd').addClass('dd-active');
+    		cartVisible=true;
+    		showCartItems();
+    	    }
+    	    else{
+    	    	showCartItems();
+    	    }
+        });
+	});
 }
 
 function isEmpty(obj) {
