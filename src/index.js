@@ -47,8 +47,10 @@ function loadGoods(id){
 	var link = 'https://nit.tron.net.ua/api/product/list/category/'+id;
 	$.getJSON(link, function(data) {
         var out ='';
+        var k=0;
         for(var key in data){
-        	console.log(data[key].image_url);
+
+        	//console.log(data[key].image_url);
         	out+='<div class="goods-grid">';
 
         	out+='<div class="goods-img">';
@@ -65,31 +67,40 @@ function loadGoods(id){
         		out+='<p class="price">'+data[key]['special_price']+' грн. </p>';
         	}
         	
-        	out+='<button class="my-button" data-art="'+data[key]['id']+'"> В корзину </button>'
+        	out+='<button class="my-button" data-art="'+data[key]['id']+'" data-art2="'+key+'"> В корзину </button>'
+        	//console.log(data[key]['id']);
         	out+='</div>';
 
         	out+='</div>';
 
+        	k++;
         }
         $('#goods').html(out);
+
         $('button.my-button').on('click', function(){
         	var id = $(this).attr('data-art');
+        	var key = parseInt($(this).attr('data-art2'));
+        	console.log(id);
+        	console.log(data);
+        	console.log(key);
         	$( "#cart" ).effect( "shake" );
-        	if(cart[id]!=undefined){
-        		cart[id].quantity++;
+
+        	if(cart[id-1]!=undefined){
+        		cart[id-1].quantity++;
         	}
         	else{
         		//cart[id].quantity=1;
-        		cart[id]={};
-        		cart[id].name=data[id-1]['name'];
-        		cart[id].image=data[id-1]['image_url'];
-        		cart[id].quantity=1;
-        		if(data[id-1]['special_price']!=null){
-        			cart[id].price=data[id-1]['special_price'];
+        		cart[id-1]={};
+        		cart[id-1].name=data[key]['name'];
+        		cart[id-1].image=data[key]['image_url'];
+        		cart[id-1].quantity=1;
+        		if(data[key]['special_price']!=null){
+        			cart[id-1].price=data[key]['special_price'];
         		}else{
-        			cart[id].price=data[id-1]['price'];
+        			cart[id-1].price=data[key]['price'];
         		}
         	}
+
         	localStorage.setItem('cart',JSON.stringify(cart));
         	
         	if(!cartVisible){
@@ -125,7 +136,7 @@ function loadCategories() {
         
         $('li.load').on('click', function(){
         	var id = $(this).attr('data-art');
-	        //console.log(id);
+	        console.log(id);
 	        loadGoods(id);
 	        $('#ghead').html(categoryDescription[id-1]);
 	        $('.load:eq('+(selectedCategory-1)+')').removeClass('highlight');
@@ -142,7 +153,7 @@ function cartCheck(){
 }
 
 function showCartItems(){
-	console.log(cart);
+	//console.log(cart);
 	if(!isEmpty(cart)){
     var currPrice=0.00;
 
