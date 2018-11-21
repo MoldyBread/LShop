@@ -151,7 +151,7 @@ function showCartItems(){
 	for(var item in cart){
 		out+='<div id="cart-dd">';
 		out+='<div class="cart-item">';
-		out+='<img data-art="'+item+'" class="cross" src="https://simpleicon.com/wp-content/uploads/cross.png">';
+		out+='<img data-art="'+item+'" class="cross" src="./Pictures/cross.png">';
 		out+='<p class="good" data-art="'+item+'">'+cart[item].name+'</p>';
 		out+='<div class="quantity">';
 		out+='<img data-art="'+item+'" class="left-img" src="./Pictures/plus.png">';
