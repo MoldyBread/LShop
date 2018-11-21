@@ -175,12 +175,18 @@ function showCartItems(){
 	}
 	out+='</div>';
 	out+='<p>Разом: '+currPrice+' грн. </p>';
-	out+='<button class="my-button">До оплати</button>'
+	out+='<button class="my-button" id="checkout">До замовлення</button>';
 	
 
 
 
 	$('#dropdown').html(out);
+
+
+	$('button#checkout').on('click', function(){
+		cartDrop();
+		showCheckoutDialog(currPrice);
+	});
 
 	$('p.good').on('click', function(){
 		var id = $(this).attr('data-art');
@@ -215,6 +221,54 @@ function showCartItems(){
 		var out='<p style="text-align: center;border-bottom: 1px dotted #4F677A;margin: 0px; padding-bottom: 4px;">Корзина</p>';out+='<p>Нічого не додано</p>';
 		$('#dropdown').html(out);
 	}
+}
+
+function showCheckoutDialog(price){
+
+	var token='hB1oMwbykOkL9_4fRQeK';
+	var products=[];
+
+
+
+
+
+	$("#dialog").fadeIn();
+	$('.main-content').addClass('blur');
+	$('footer').addClass('fix');
+	var out='';
+
+	out+='<p style="text-transform:uppercase; font-weight: bold; ">Ваше замовлення</p>';
+	out+='<div class="my-order">';
+	for(var key in cart){
+		out+='<p>'+cart[key].name+' ('+cart[key].quantity+' шт.)</p>';
+		products[key]=cart[key].quantity;
+	}
+	out+='</div>';
+
+    out+='<p class="fullprice">Разом: '+price+' грн.</p>';
+
+	out+='<div style="margin-bottom:10px; border-top: 2px solid #000;">';
+	out+='<p>Як до вас звертатись?</p>';
+	out+='<input id="n1" type="text">';
+	out+='<p>Ваш номер телефону</p>';
+	out+='<input id="p1" type="text">';
+    out+='<p>Ваш e-mail</p>';
+	out+='<input id="e1" type="text">';
+	out+='</div>';
+    out+='<button class="my-button" id="send">Замовити</button>';
+	$('.dialog-content').html(out);
+
+	
+
+	$('button#send').on('click', function(){
+		var name=$('#n1').val();
+	var phone=$('#p1').val();
+	var email=$('#e1').val();
+		console.log(name);
+		console.log(email);
+		console.log(phone);
+	});
+
 }
 
 function showGoodDialog(id){

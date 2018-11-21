@@ -331,11 +331,12 @@ p.getDescription:hover {
     margin-top: 50px; } }
 
 .back-dialog {
-  width: 100%;
+  width: auto;
   min-height: 100%;
   position: fixed;
   top: 100px;
-  z-index: 99; }
+  z-index: 99;
+  margin: 0 20%; }
 
 .dialog-inner {
   position: relative;
@@ -352,8 +353,10 @@ p.getDescription:hover {
   padding: 15px 30px; }
 
 .dialog-content img {
-  max-width: 30%;
-  max-height: 40%; }
+  min-width: 30%;
+  min-height: 40%;
+  max-width: 60%;
+  max-height: 70%; }
 
 .dialog-title {
   margin: 0 auto;
@@ -401,7 +404,7 @@ p.getDescription:hover {
   margin-left: 2.5%;
   float: left; }
 
-.dialog-item-info .my-button {
+.dialog-content .my-button {
   margin: 10px 0 0 0; }
 
 .dialog-price {
@@ -414,6 +417,20 @@ p.getDescription:hover {
 
 .dialog-price .sales {
   margin: 10px; }
+
+.my-order {
+  border: 2px solid #5682a3;
+  width: auto;
+  padding: 0 10px; }
+
+.my-order p {
+  overflow: hidden; }
+
+.fullprice {
+  background-color: #5682a3;
+  color: #fff;
+  padding: 5px;
+  border-radius: 7px; }
 
 .blur {
   filter: blur(4px) contrast(0.5) brightness(0.9);
