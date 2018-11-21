@@ -44,7 +44,7 @@ function cartDrop(){
 
 
 function loadGoods(id){
-	var link = 'http://nit.tron.net.ua/api/product/list/category/'+id;
+	var link = 'https://nit.tron.net.ua/api/product/list/category/'+id;
 	$.getJSON(link, function(data) {
         var out ='';
         for(var key in data){
@@ -111,7 +111,7 @@ function loadGoods(id){
 }
 
 function loadCategories() {
-	$.getJSON('http://nit.tron.net.ua/api/category/list', function(data) {
+	$.getJSON('https://nit.tron.net.ua/api/category/list', function(data) {
 		var out='<ul>';
 		 for(var key in data){
 		 	out+='<li class="load" data-art="'+data[key]['id']+'">'+data[key]['name']+'</li>';
@@ -122,6 +122,7 @@ function loadCategories() {
         $('#categories').html(out);
         $('#ghead').html(categoryDescription[0]);
         $('.load:eq(0)').addClass('highlight');
+        
         $('li.load').on('click', function(){
         	var id = $(this).attr('data-art');
 	        //console.log(id);
@@ -150,7 +151,7 @@ function showCartItems(){
 	for(var item in cart){
 		out+='<div id="cart-dd">';
 		out+='<div class="cart-item">';
-		out+='<img data-art="'+item+'" class="cross" src="http://simpleicon.com/wp-content/uploads/cross.png">';
+		out+='<img data-art="'+item+'" class="cross" src="https://simpleicon.com/wp-content/uploads/cross.png">';
 		out+='<p class="good" data-art="'+item+'">'+cart[item].name+'</p>';
 		out+='<div class="quantity">';
 		out+='<img data-art="'+item+'" class="left-img" src="./Pictures/plus.png">';
@@ -210,7 +211,7 @@ function showGoodDialog(id){
 	$('.main-content').addClass('blur');
 	$('footer').addClass('fix');
 
-	$.getJSON('http://nit.tron.net.ua/api/product/'+id, function(data) {
+	$.getJSON('https://nit.tron.net.ua/api/product/'+id, function(data) {
 		var out='';
 
 		out+='<img style="float:left;" src="'+data['image_url']+'">';
