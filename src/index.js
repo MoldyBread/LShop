@@ -50,7 +50,6 @@ function loadGoods(id){
         var k=0;
         for(var key in data){
 
-        	//console.log(data[key].image_url);
         	out+='<div class="goods-grid">';
 
         	out+='<div class="goods-img">';
@@ -68,7 +67,6 @@ function loadGoods(id){
         	}
         	
         	out+='<button class="my-button" data-art="'+data[key]['id']+'" data-art2="'+key+'"> В корзину </button>'
-        	//console.log(data[key]['id']);
         	out+='</div>';
 
         	out+='</div>';
@@ -80,9 +78,7 @@ function loadGoods(id){
         $('button.my-button').on('click', function(){
         	var id = $(this).attr('data-art');
         	var key = parseInt($(this).attr('data-art2'));
-        	console.log(id);
-        	console.log(data);
-        	console.log(key);
+        	
         	$( "#cart" ).effect( "shake" );
 
         	if(cart[id-1]!=undefined){
@@ -136,7 +132,7 @@ function loadCategories() {
         
         $('li.load').on('click', function(){
         	var id = $(this).attr('data-art');
-	        console.log(id);
+	      
 	        loadGoods(id);
 	        $('#ghead').html(categoryDescription[id-1]);
 	        $('.load:eq('+(selectedCategory-1)+')').removeClass('highlight');
@@ -153,7 +149,6 @@ function cartCheck(){
 }
 
 function showCartItems(){
-	//console.log(cart);
 	if(!isEmpty(cart)){
     var currPrice=0.00;
 
@@ -261,10 +256,17 @@ function showCheckoutDialog(price){
 
 	$('button#send').on('click', function(){
 		var formData = new FormData(document.forms.ordr);
-
+		console.log(cart);
+		var intK;
         for(var key in cart){
-        	formData.append("products["+key+"]",cart[key].quantity);
+        	intK =parseInt(key)+1;
+        	formData.append("products["+intK+"]",cart[key].quantity);
+        	delete cart[key];
         }
+
+
+        localStorage.setItem('cart',JSON.stringify(cart));
+        console.log(cart);
 
         formData.append("token", "hB1oMwbykOkL9_4fRQeK");
 
@@ -274,7 +276,7 @@ function showCheckoutDialog(price){
         xhr.open("POST", "https://nit.tron.net.ua/api/order/add");
         xhr.send(formData);
 
-	    
+	    $('.dialog-content').html('<p>Ваше замовлення успішно сформоване</p>');
 	});
 
 }
