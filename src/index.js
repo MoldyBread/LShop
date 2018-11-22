@@ -225,10 +225,6 @@ function showCartItems(){
 
 function showCheckoutDialog(price){
 
-	var token='hB1oMwbykOkL9_4fRQeK';
-	var order={};
-	order['token']=token;
-
 	$("#dialog").fadeIn();
 	$('.main-content').addClass('blur');
 	$('footer').addClass('fix');
@@ -238,7 +234,6 @@ function showCheckoutDialog(price){
 	out+='<div class="my-order">';
 	for(var key in cart){
 		out+='<p>'+cart[key].name+' ('+cart[key].quantity+' шт.)</p>';
-		order['products['+key+']']=cart[key].quantity;
 		
 	}
 	out+='</div>';
@@ -246,6 +241,7 @@ function showCheckoutDialog(price){
     out+='<p class="fullprice">Разом: '+price+' грн.</p>';
 
 	out+='<div style="margin-bottom:10px; border-top: 2px solid #000;">';
+
 	out+='<form name="ordr" action="" method="post">';
 	out+='<p>Як до вас звертатись?</p>';
 	out+='<input name="name" id="n1" type="text"  placeholder="Ім\'я" required>';
@@ -264,23 +260,19 @@ function showCheckoutDialog(price){
 	
 
 	$('button#send').on('click', function(){
-		if($('#n1').val()!=='' && $('#p1').val()!=='' && $('#e1').val()!==''){
-		order['name'] = $('#n1').val();
-	    order['phone'] = $('#p1').val();
-	    order['email'] = $('#e1').val();
+		var formData = new FormData(document.forms.ordr);
 
-	    $.ajax({
-           type: 'POST',
-           url: "https://nit.tron.net.ua/api/order/add",
-           data: JSON.stringify(order),
-           error: function(e) {
-             console.log(e);
-           },
-           dataType: "json",
-           contentType: "application/json"
-        });
-	    }
+        for(var key in cart){
+        	formData.append("products["+key+"]",cart[key].quantity);
+        }
 
+        formData.append("token", "hB1oMwbykOkL9_4fRQeK");
+
+
+        // отослать
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://nit.tron.net.ua/api/order/add");
+        xhr.send(formData);
 
 	    
 	});
