@@ -226,11 +226,8 @@ function showCartItems(){
 function showCheckoutDialog(price){
 
 	var token='hB1oMwbykOkL9_4fRQeK';
-	var products=[];
-
-
-
-
+	var order={};
+	order['token']=token;
 
 	$("#dialog").fadeIn();
 	$('.main-content').addClass('blur');
@@ -241,32 +238,51 @@ function showCheckoutDialog(price){
 	out+='<div class="my-order">';
 	for(var key in cart){
 		out+='<p>'+cart[key].name+' ('+cart[key].quantity+' шт.)</p>';
-		products[key]=cart[key].quantity;
+		order['products['+key+']']=cart[key].quantity;
+		
 	}
 	out+='</div>';
 
     out+='<p class="fullprice">Разом: '+price+' грн.</p>';
 
 	out+='<div style="margin-bottom:10px; border-top: 2px solid #000;">';
+	out+='<form name="ordr" action="" method="post">';
 	out+='<p>Як до вас звертатись?</p>';
-	out+='<input id="n1" type="text">';
+	out+='<input name="name" id="n1" type="text"  placeholder="Ім\'я" required>';
 	out+='<p>Ваш номер телефону</p>';
-	out+='<input id="p1" type="text">';
+	out+='<input name="phone" id="p1" placeholder="Телефон" type="tel" required>';
     out+='<p>Ваш e-mail</p>';
-	out+='<input id="e1" type="text">';
-	out+='</div>';
+	out+='<input name="email" id="e1" type="email" placeholder="Еmail" required>';
+	
+    
+    out+='</form>';
+    out+='</div>';
     out+='<button class="my-button" id="send">Замовити</button>';
+
 	$('.dialog-content').html(out);
 
 	
 
 	$('button#send').on('click', function(){
-		var name=$('#n1').val();
-	var phone=$('#p1').val();
-	var email=$('#e1').val();
-		console.log(name);
-		console.log(email);
-		console.log(phone);
+		if($('#n1').val()!=='' && $('#p1').val()!=='' && $('#e1').val()!==''){
+		order['name'] = $('#n1').val();
+	    order['phone'] = $('#p1').val();
+	    order['email'] = $('#e1').val();
+
+	    $.ajax({
+           type: 'POST',
+           url: "https://nit.tron.net.ua/api/order/add",
+           data: JSON.stringify(order),
+           error: function(e) {
+             console.log(e);
+           },
+           dataType: "json",
+           contentType: "application/json"
+        });
+	    }
+
+
+	    
 	});
 
 }
