@@ -21,7 +21,7 @@ footer a, header a {
 
 header {
   margin-top: -5px;
-  position: relative; }
+  position: fixed; }
 
 footer {
   flex: 0 0 auto;
@@ -296,7 +296,7 @@ p.getDescription:hover {
   color: #fff;
   background-color: #4F677A; }
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 768px) {
   .dd {
     margin-top: 50px; }
   header {
