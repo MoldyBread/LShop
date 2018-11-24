@@ -192,7 +192,7 @@ footer img:hover{
 
 .categories,.goods{	
 	display: block;
-    margin: 20px 15% 10px 15%;
+    margin: 20px auto 10px auto;
     background-color: #fff;
 	box-shadow: 0 0 2px 0 rgba(51,51,51,.05), 0 1px 4px 0 rgba(51,51,51,.15);
 	border-radius: 0 0 2px 2px;
@@ -257,8 +257,8 @@ footer img:hover{
 .goods{
 	
 	width: auto;
-	max-width: 75%;
-	
+	//max-width: 75%;
+	min-width: 400px;
 }
 
 .goods-head{
@@ -270,7 +270,7 @@ footer img:hover{
 }
 
 div.goods-grid{
-	margin: 10px 3%;
+	//margin: 10px 15px;
 }
 
 .goods-grid{
@@ -279,8 +279,7 @@ div.goods-grid{
     padding-bottom: 15px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.5); 	//border: 2px solid #000;
-	margin: 27px;
-	float: left;
+	margin: 27px auto;
 	text-align: center;
 	overflow :hidden; 
 }
@@ -369,7 +368,7 @@ p.getDescription:hover{
     background-color: #4F677A;
 }
 
-@media screen and (min-width: 1000px){
+@media only screen  and (min-width : 1224px){
 	.dd{
 		margin-top: 50px;
 	}
@@ -388,6 +387,7 @@ p.getDescription:hover{
 	.categories,.goods{
 	  //vertical-align:top;
 	  //display: inline-block;
+	  margin: 20px 15% 10px 15%;
 	  float: left;
       background-color: #fff;
 	  box-shadow: 0 0 2px 0 rgba(51,51,51,.05), 0 1px 4px 0 rgba(51,51,51,.15);
@@ -406,7 +406,7 @@ p.getDescription:hover{
     .goods{
     	margin: 80px auto 10px auto;
     	//width: auto;
-    	//max-width: 75%;
+    	max-width: 75%;
     	position: relative;
     }
 
@@ -414,6 +414,14 @@ p.getDescription:hover{
     	//display: block;
 	    margin:0 auto;
 
+    }
+    .goods-grid{
+    	float: left;
+    	
+    }
+
+    div.goods-grid{
+    	margin: 10px 1.5%;
     }
 
 }

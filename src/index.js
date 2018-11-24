@@ -48,6 +48,7 @@ function loadGoods(id){
 	$.getJSON(link, function(data) {
         var out ='';
         var k=0;
+        out+='<div style="background-color: #fff;">';
         for(var key in data){
 
         	out+='<div class="goods-grid">';
@@ -73,6 +74,7 @@ function loadGoods(id){
 
         	k++;
         }
+        out+='</div>';
         $('#goods').html(out);
 
         $('button.my-button').on('click', function(){
@@ -261,12 +263,7 @@ function showCheckoutDialog(price){
         for(var key in cart){
         	intK =parseInt(key)+1;
         	formData.append("products["+intK+"]",cart[key].quantity);
-        	delete cart[key];
         }
-
-
-        localStorage.setItem('cart',JSON.stringify(cart));
-        console.log(cart);
 
         formData.append("token", "hB1oMwbykOkL9_4fRQeK");
 
@@ -274,11 +271,38 @@ function showCheckoutDialog(price){
         // отослать
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://nit.tron.net.ua/api/order/add");
-        xhr.send(formData);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {  
+               if (xhr.status === 200) {  
+                  if(xhr.responseText.indexOf('error')>0){
+                    alert('Щось пішло не так(перевірте введені дані)');
+                  }
+                  else{
+                    for(var key in cart){
+                       delete cart[key];
+                    }
 
-	    $('.dialog-content').html('<p>Ваше замовлення успішно сформоване</p>');
+                    
+                    $('.dialog-content').html('<p>Ваше замовлення успішно сформоване</p>');
+                    localStorage.setItem('cart',JSON.stringify(cart));
+
+                  }
+                 
+                } 
+           }   
+        }
+
+        
+
+        xhr.send(formData);
+        
 	});
 
+}
+
+function check(str) {
+
+  return !!(~str.indexOf('error'));
 }
 
 function showGoodDialog(id){

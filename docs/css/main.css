@@ -156,7 +156,7 @@ footer img:hover {
 
 .categories, .goods {
   display: block;
-  margin: 20px 15% 10px 15%;
+  margin: 20px auto 10px auto;
   background-color: #fff;
   box-shadow: 0 0 2px 0 rgba(51, 51, 51, 0.05), 0 1px 4px 0 rgba(51, 51, 51, 0.15);
   border-radius: 0 0 2px 2px; }
@@ -207,7 +207,7 @@ footer img:hover {
 
 .goods {
   width: auto;
-  max-width: 75%; }
+  min-width: 400px; }
 
 .goods-head {
   text-align: left;
@@ -216,17 +216,13 @@ footer img:hover {
   color: #4F677A;
   border-bottom: 1px dotted #4F677A; }
 
-div.goods-grid {
-  margin: 10px 3%; }
-
 .goods-grid {
   height: 454.200px;
   width: 250px;
   padding-bottom: 15px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  margin: 27px;
-  float: left;
+  margin: 27px auto;
   text-align: center;
   overflow: hidden; }
 
@@ -300,7 +296,7 @@ p.getDescription:hover {
   color: #fff;
   background-color: #4F677A; }
 
-@media screen and (min-width: 1000px) {
+@media only screen and (min-width: 1224px) {
   .dd {
     margin-top: 50px; }
   header {
@@ -311,6 +307,7 @@ p.getDescription:hover {
   header a {
     margin-left: 0; }
   .categories, .goods {
+    margin: 20px 15% 10px 15%;
     float: left;
     background-color: #fff;
     box-shadow: 0 0 2px 0 rgba(51, 51, 51, 0.05), 0 1px 4px 0 rgba(51, 51, 51, 0.15);
@@ -322,9 +319,14 @@ p.getDescription:hover {
     margin-top: 5.5px; }
   .goods {
     margin: 80px auto 10px auto;
+    max-width: 75%;
     position: relative; }
   .goods-items {
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .goods-grid {
+    float: left; }
+  div.goods-grid {
+    margin: 10px 1.5%; } }
 
 @media screen and (min-width: 554px) {
   .dd {
