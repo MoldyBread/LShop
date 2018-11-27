@@ -313,15 +313,20 @@ function showGoodDialog(id){
 	$.getJSON('https://nit.tron.net.ua/api/product/'+id, function(data) {
 		var out='';
 
+        out+='<div class="dialog-img">';
 		out+='<img style="float:left;" src="'+data['image_url']+'">';
+        out+='</div>';
+
 
         out+='<div class="dialog-right">';
         out+='<h3>'+data['name']+'</h3>';
 		out+='<div class="dialog-item-info">';
 		
 		out+='<p style="text-transform: uppercase; margin-bottom: 5px;">Опис товару</p>';
-		out+='<p style="font: 88% Arial, sans-serif; margin-top: 5px;">'+data['description']+'</p>';
-		out+='<div class="dialog-price">';
+        out+='<div style="width: 60%;">';
+		out+='<p style="font: 75% Arial, sans-serif; margin-top: 5px;">'+data['description']+'</p>';
+		out+='</div>';
+        out+='<div class="dialog-price">';
 		out+='<p style="text-transform: uppercase; margin: 5px 10px;">Ціна</p>';
 
 		if(data['special_price']===null){

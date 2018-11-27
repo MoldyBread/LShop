@@ -4,7 +4,6 @@ html {
 body {
   margin: 5px 0 0 0;
   width: auto;
-  min-width: 175px;
   font: 100% Arial, sans-serif;
   background-color: #cacaca;
   overflow-x: hidden; }
@@ -149,7 +148,6 @@ footer img:hover {
 
 .main-content {
   z-index: 50;
-  min-width: 387px;
   width: 100%;
   display: table-row; }
 
@@ -332,12 +330,12 @@ p.getDescription:hover {
     margin-top: 50px; } }
 
 .back-dialog {
-  width: auto;
+  width: 100%;
   min-height: 100%;
   position: fixed;
   top: 100px;
   z-index: 99;
-  margin: 0 20%; }
+  margin: 0 auto; }
 
 .dialog-inner {
   position: relative;
@@ -353,11 +351,38 @@ p.getDescription:hover {
   max-height: 400px;
   padding: 15px 30px; }
 
-.dialog-content img {
-  min-width: 30%;
-  min-height: 40%;
-  max-width: 60%;
-  max-height: 70%; }
+.dialog-img {
+  width: 50%;
+  height: 50%; }
+
+.dialog-img img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto; }
+
+/* .dialog-img{
+	min-width: 30%;
+	min-height: 40%;
+	max-width: 60%;
+	max-height: 70%;
+}
+
+.dialog-content img{
+	min-width: 230px;
+	min-height: 290px;
+	max-width: 230px;
+	max-height: 290px;
+	min-width: 30%;
+	min-height: 40%;
+	max-width: 60%;
+	max-height: 70%;
+} */
+.dialog-right {
+  width: auto;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  float: left; }
 
 .dialog-title {
   margin: 0 auto;
@@ -398,12 +423,6 @@ p.getDescription:hover {
   text-transform: uppercase;
   font-weight: 400;
   border-bottom: 2px solid #3498DB; }
-
-.dialog-right {
-  min-width: 220px;
-  max-width: 700px;
-  margin-left: 2.5%;
-  float: left; }
 
 .dialog-content .my-button {
   margin: 10px 0 0 0; }
