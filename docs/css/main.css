@@ -379,7 +379,7 @@ p.getDescription:hover {
 	max-height: 70%;
 } */
 .dialog-right {
-  width: auto;
+  width: 60%;
   margin-left: 2.5%;
   margin-right: 2.5%;
   float: left; }

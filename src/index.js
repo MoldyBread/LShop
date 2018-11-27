@@ -319,11 +319,12 @@ function showGoodDialog(id){
 
 
         out+='<div class="dialog-right">';
-        out+='<h3>'+data['name']+'</h3>';
+
+        out+='<h3 >'+data['name']+'</h3>';
 		out+='<div class="dialog-item-info">';
-		
+		out+='<div style="width: 60%;">';
 		out+='<p style="text-transform: uppercase; margin-bottom: 5px;">Опис товару</p>';
-        out+='<div style="width: 60%;">';
+        
 		out+='<p style="font: 75% Arial, sans-serif; margin-top: 5px;">'+data['description']+'</p>';
 		out+='</div>';
         out+='<div class="dialog-price">';
