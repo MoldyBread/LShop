@@ -20,6 +20,7 @@ footer a, header a {
   text-decoration: none; }
 
 header {
+  z-index: 200;
   margin-top: -5px;
   position: fixed; }
 
@@ -34,13 +35,11 @@ header a {
   font-size: 36px; }
 
 footer a {
-  text-decoration: underline;
-  color: #4F677A;
-  background-color: #fff; }
+  text-decoration: none;
+  color: #fff; }
 
 footer .f-mail:hover {
-  color: #fff;
-  background-color: #4F677A; }
+  color: #fff; }
 
 footer img {
   width: 30px;
@@ -318,7 +317,7 @@ p.getDescription:hover {
   .categories-head {
     margin-top: 5.5px; }
   .goods {
-    margin: 80px auto 10px auto;
+    margin: 80px 18px 10px 18px;
     max-width: 75%;
     position: relative; }
   .goods-items {

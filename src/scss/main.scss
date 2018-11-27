@@ -27,6 +27,7 @@ footer a,header a{
 }
 
 header{
+	z-index: 200;
 	margin-top: -5px;
 	position: fixed;
 }
@@ -46,14 +47,14 @@ header a{
 }
 
 footer a{
-	text-decoration: underline;
-	color: #4F677A;
-	background-color: #fff;
+	text-decoration: none;
+	color: #fff;
+	//background-color: #fff;
 }
 
 footer .f-mail:hover{
 	color: #fff;
-	background-color:#4F677A;
+	//background-color:#4F677A;
 }
 
 footer img{
@@ -404,8 +405,7 @@ p.getDescription:hover{
     }
 
     .goods{
-    	margin: 80px auto 10px auto;
-    	//width: auto;
+    	margin: 80px 18px 10px 18px;
     	max-width: 75%;
     	position: relative;
     }
