@@ -119,6 +119,7 @@ function loadGoods(id){
     });
 }
 
+var currentC;
 function loadCategories() {
 	$.getJSON('https://nit.tron.net.ua/api/category/list', function(data) {
 		var out='<ul>';
@@ -134,12 +135,15 @@ function loadCategories() {
         
         $('li.load').on('click', function(){
         	var id = $(this).attr('data-art');
-	      
-	        loadGoods(id);
-	        $('#ghead').html(categoryDescription[id-1]);
-	        $('.load:eq('+(selectedCategory-1)+')').removeClass('highlight');
-	        $('.load:eq('+(id-1)+')').addClass('highlight');
-	        selectedCategory=id;
+
+            if(currentC!==id){
+	           loadGoods(id);
+	           $('#ghead').html(categoryDescription[id-1]);
+	           $('.load:eq('+(selectedCategory-1)+')').removeClass('highlight');
+	           $('.load:eq('+(id-1)+')').addClass('highlight');
+	           selectedCategory=id;
+               currentC=id;
+            }
         });
 	});
 }
